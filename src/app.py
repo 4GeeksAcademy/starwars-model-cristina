@@ -10,9 +10,16 @@ from utils import APIException, generate_sitemap
 from admin import setup_admin
 from models import db, User
 #from models import Person
+from routesPeople import people_routes
+from routesPlanets import planets_routes
+from routesFavs import favorites_routes
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
+people_routes(app)
+planets_routes(app)
+favorites_routes(app)
+
 
 db_url = os.getenv("DATABASE_URL")
 if db_url is not None:
